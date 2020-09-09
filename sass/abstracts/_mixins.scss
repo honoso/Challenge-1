@@ -1,0 +1,4 @@
+// 1 em = 16px
+@mixin phone {
+    @media (max-width: 23.4375em) {@content};   // 375px
+}

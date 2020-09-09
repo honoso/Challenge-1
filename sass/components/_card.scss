@@ -1,0 +1,201 @@
+.main {
+    height: 30%;
+    width: 65%;
+    display: table;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @include phone {
+        width: 85%; 
+        height: 65%;
+    }
+}
+
+.card {
+    overflow: hidden;
+    border-radius: 1.5rem;
+
+    &__left {
+        display: table-cell;
+        width: 40%;
+        background-image: url(../img/drawers.jpg);
+        background-size: cover;
+
+        @include phone {
+            display: inline-block;
+            width: 100%;
+            height: 25rem;
+        }
+    }
+
+    &__right {
+        display: table-cell;
+        vertical-align: top;
+        width: 60%;
+        background-color: $color-white;
+        padding: 5rem;
+
+        @include phone {
+            display: inline-block;
+            width: 100%;
+            padding: 2rem 3rem;
+        }
+    }
+
+    &__publisher {
+
+        &,
+        &::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        &-img {
+            height: 6rem;
+            width: 6rem;
+            border-radius: 50%;
+            background-image: url(../img/avatar-michelle.jpg);
+            background-size: cover;
+            float: left;
+            margin-right: 2rem;
+        }
+
+        &-name {
+            display: inline-block;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: $color-dark;
+            margin-bottom: .5rem;
+            margin-top: 1rem;
+        }
+
+        &-date {
+            color: $color-light;
+            font-size: 1.3rem;
+        }
+    }
+
+    &__share-icon {
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        background-color: $color-background;
+        position: absolute;
+        right: 6rem;
+        bottom: 6rem;
+        transition: all .3s;
+
+        @include phone {
+            z-index: 100;
+        }
+
+        svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.1);
+            fill: $color-light;
+            transition: all .3s;
+        }  
+
+        &:hover {
+            background-color: $color-dark;
+
+            svg {
+                fill: $color-white;
+            }
+        }
+    }
+
+    &__share-popup {
+        position: absolute;
+        bottom: 9rem;
+        right: -5.5rem;
+        height: 10rem;
+        width: 27rem;
+        visibility: hidden;
+        opacity: 0;
+        transition: all .5s;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 50% 100%, 25% 75%, 0% 75%);
+
+        @include phone {
+            bottom: -4.1rem;
+            right: 0;
+            width: 45.3rem;
+            height: 16rem;
+        }
+
+        &:hover {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        &--block {
+            border-radius: 1rem;
+            width: 100%;
+            height: 55%;
+            background-color: $color-dark;
+            position: relative;
+
+            @include phone {
+                border-radius: 0 0 1.5rem 1.5rem;
+            }
+
+            div {
+                display: inline-block;
+                width: 70%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                span {
+                    display: inline-block;
+                    color: $color-light;
+                    margin-right: 1rem;
+                    font-size: 1.3rem;
+                    letter-spacing: .5rem;
+                    text-transform: uppercase;
+                }
+    
+                svg {
+                    fill: $color-white;
+
+                    &:not(:last-child) {
+                        margin-right: 1rem;
+                    }
+                }
+            }
+        }
+
+        &--triangle {
+            width: 10%;
+            height: 20%;
+            background-color: $color-dark;
+            clip-path: polygon(100% 0, 0 0, 50% 100%);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+
+            @include phone {
+                visibility: hidden;
+            }
+        }
+    }  
+    
+    &__share-icon:hover + &__share-popup {
+        visibility: visible;
+        opacity: 1;
+    }
+    
+    &__share-popup:hover ~ &__share-icon {
+        background-color: $color-dark;
+
+        svg {
+            fill: $color-white;
+        }
+    }
+}
